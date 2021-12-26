@@ -24,10 +24,24 @@ class OceanFloor
     end
   end
 
+  def draw_horizontal_line((x1, y1), (x2, y2))
+    x_dir = x1 < x2 ? 1 : -1
+    y_dir = y1 < y2 ? 1 : -1
+
+    @grid[x1][y1] += 1
+    while x1 != x2 && y1 != y2
+      x1 += x_dir
+      y1 += y_dir
+      @grid[x1][y1] += 1
+    end
+  end
+
   def draw_lines
     lines.each do |((x1, y1), (x2, y2))|
       if x1 == x2 || y1 == y2
         draw_normal_line([x1, y1], [x2, y2])
+      else
+        draw_horizontal_line([x1, y1], [x2, y2])
       end
     end
   end
