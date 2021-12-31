@@ -10,18 +10,32 @@ RSpec.describe School do
   it 'decrements ages by 1 when it tick' do
     school = described_class.new([4])
     school.tick
-    expect(school.ages).to eq([3])
-  end
-
-  it 'resets to 6 after 0' do
-    school = described_class.new([0])
-    school.tick
-    expect([school.ages.first]).to eq([6])
+    expect(school.ages).to eq({
+      0 => 0,
+      1 => 0,
+      2 => 0,
+      3 => 1,
+      4 => 0,
+      5 => 0,
+      6 => 0,
+      7 => 0,
+      8 => 0
+    })
   end
 
   it 'births a new fish after 0' do
     school = described_class.new([0])
     school.tick
-    expect(school.ages).to eq([6, 8])
+    expect(school.ages).to eq({
+      0 => 0,
+      1 => 0,
+      2 => 0,
+      3 => 0,
+      4 => 0,
+      5 => 0,
+      6 => 1,
+      7 => 0,
+      8 => 1
+    })
   end
 end
