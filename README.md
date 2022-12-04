@@ -20,6 +20,6 @@ $ ruby number_increases.rb input.txt
 
 * Run tests
 ```shell
-$ bundle exec rspec spec/2021/day1_spec.rb 
+$ bin/guard 
 ```
 ---
