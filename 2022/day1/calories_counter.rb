@@ -11,8 +11,8 @@ class CaloriesCounter
 
     @foods.each do |calorie|
       sum += calorie
-      
-      if calorie.zero?
+
+      if calorie.zero? || calorie == @foods.last
         @calories << sum
         sum = 0
       end
@@ -21,6 +21,10 @@ class CaloriesCounter
 
   def get_maximum_calorie
     @calories.max
+  end
+
+  def get_sum_first_three_calories
+    @calories.sort.reverse[0..2].sum
   end
 end 
 
@@ -31,4 +35,5 @@ if __FILE__ == $0
   calories_counter.sum_calories
 
   puts "Maximum calorie: #{calories_counter.get_maximum_calorie}"
+  puts "Sum first three calories: #{calories_counter.get_sum_first_three_calories}"
 end
